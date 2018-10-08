@@ -57,11 +57,21 @@
                         <li class="nav-item">
                             <a class="nav-link" href="adm.php?link=4">Resultados</a>
                         </li>                      
-                        <li class="nav-item">
-                            <a class="nav-link" href="adm.php?link=5">Votar</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="adm.php?link=7">Votar2</a>
+                       
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Votar</a>
+                            <div class="dropdown-menu">
+
+
+
+                            <a class="dropdown-item" href="adm.php?link=8">Deputado</a>
+                            <a class="dropdown-item " href="adm.php?link=9">1º Senador</a>
+                            <a class="dropdown-item" href="adm.php?link=10">2º Senador</a>
+                            <a class="dropdown-item" href="adm.php?link=11">Governador</a>
+                            <a class="dropdown-item" href="adm.php?link=12">Presidente</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Separated link</a>
+                            </div>
                         </li>
                         
                         <!--
@@ -97,9 +107,14 @@
        $pag[2] = "listar_usuarios.php";
        $pag[3] = "listar_partidos.php";
        $pag[4] = "resultados.php";
-       $pag[5] = "votar.php";
+
        $pag[6] = "listar_cargos.php";
-       $pag[7] = "votar_gov.php";
+
+       $pag[8] = "candidatos/deputado.php";
+       $pag[9] = "candidatos/1senador.php";
+       $pag[10] = "candidatos/2senador.php";
+       $pag[11] = "candidatos/governador.php";
+       $pag[12] = "candidatos/presidente.php";
        
        
        if(isset($_GET["link"])) {

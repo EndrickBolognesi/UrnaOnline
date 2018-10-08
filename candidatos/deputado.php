@@ -5,69 +5,14 @@
   aria-expanded="false" aria-label="Toggle navigation" title="Atualizar" data-toggle="tooltip"></a>
   <div class="collapse navbar-collapse" id="collapsibleNavId">
   
-  <ul class="navbar-nav mx-auto mt-2 mt-lg-0 ">
+  <!-- <ul class="navbar-nav mx-auto mt-2 mt-lg-0 ">
 
-  <!--  mr-auto -->
-        <!-- <form class="form-inline my-2 my-lg-0"  method="POST">
-
-        <select name="optionpartido" id="optionpartido" class="custom-select " >
-        <option value="0" selected>Partido</option>
-        <?php 
-                    
-            $sql1 = "SELECT * FROM partidos";
-            $sql1 = $pdo->query($sql1);
-            
-            if($sql1->rowCount() > 0){
-             foreach($sql1->fetchAll() as $partidos){
-            ?>
-              <option value="<?php echo $partidos["sigla"]; ?>"><?php echo $partidos["sigla"];}?></option>
-            <?php
+    </ul>  -->
+      <div class="col-md-3 mx-auto">
+      <button class="btn btn-light btn-block " type="button">Branco </button>
+      <button class="btn btn-warning btn-block" type="button">Nulo</button>
+      </div>
              
-          }
-        
-        ?>
-        </select>
-
-       
-        <select name="optionestado" id="optionestado" class="custom-select">
-          <option selected value="0">Estado</option>
-          
-             <?php 
-            $sql2 = "SELECT * FROM estados";
-            $sql2 = $pdo->query($sql2);
-            
-            if($sql2->rowCount() > 0){
-             foreach($sql2->fetchAll() as $estados){
-            ?>
-              <option value="<?php echo $estados["nome_estado"]; ?>"><?php echo $estados["nome_estado"];}?></option>
-            <?php
-             
-          }
-          ?>
-        </select>
-        
-
-       
-        <select name="optioncargo" id="optioncargo" class="custom-select">
-        <option selected value="0">Cargo</option>
-        
-        <?php 
-          $sql3 = "SELECT * FROM cargos";
-          $sql3 = $pdo->query($sql3);
-          
-          if($sql3->rowCount() > 0){
-           foreach($sql3->fetchAll() as $cargos){
-          ?>
-            <option value="<?php echo $cargos["nome_cargo"]; ?>"><?php echo $cargos["nome_cargo"];}?></option>
-          <?php
-           
-        }
-        ?>
-        </select>
-        <button class="btn btn-success my-2 my-sm-0" type="submit">Filtar</button>
-         </form> -->
-           
-            </ul> 
    
     <form method="POST" id="form-pesquisar" action="" class="form-inline my-2 my-lg-0">
     
@@ -92,30 +37,11 @@ require('seguranca.php');
 $usuario = "SELECT * FROM usuarios WHERE id = '".$_SESSION['usuarioId']."' ";
 $usuario = $pdo->query($usuario);
 
-// if (isset($_POST['optioncargo']) && empty($_POST['optioncargo']) == false) {
-// $getcargo = $_POST['optioncargo'];
-// }else{
-//     $getcargo = 'Presidente';
-// }
-// //echo"$getcargo <br>";
-// if (isset($_POST['optionpartido']) && empty($_POST['optionpartido']) == false) {
-// $getpartido = $_POST['optionpartido'];
-// }else{
-//     $getpartido = 'pt';
-// }
-// //echo"$getpartido <br>";
-// if (isset($_POST['optionestado']) && empty($_POST['optionestado']) == false) {
-// $getestado = $_POST['optionestado'];
-
-// }else{
-//     $getestado = 'Brasil';
-// }
-//echo"$getestado <br>";
 
 
 
-//WHERE cargo = '$getcargo' AND partido = '$getpartido' 
-$sql = "SELECT * FROM candidatos   ";
+
+$sql = "SELECT * FROM candidatos  WHERE cargo = 'deputado' ";
 $sql = $pdo->query($sql);
 
 if(isset($_SESSION['msg'])){
@@ -177,17 +103,17 @@ foreach($sql->fetchAll() as $candidato){
       
                       // }
                       $cargo = $candidato["cargo"];
-                      if ($usuarios['voto_presidente'] >= 1)  {               
+                      if ($usuarios['voto_deputado'] >= 1)  {               
                       //$candidato["qt_votos"] > 0
                     
                         //votar desabilitado
-                        echo " <a class=\"btn btn-success btn-block disabled \" href=\"processa/proc_voto.php?id=\"\"\" role=\"button\" ><i  class=\"material-icons\"  >how_to_vote</i></a>";
+                        echo " <a class=\"btn btn-success btn-block disabled \" href=\"processa/proc_voto_deputado.php?id=\"\"\" role=\"button\" ><i  class=\"material-icons\"  >how_to_vote</i></a>";
                         //remover
                         //echo " <a class=\"btn btn-danger btn-block\" href=\"processa/proc_remove_voto.php?id=".$candidato["id"]."\" title=\"Remover voto\" role=\"button\" ><i  class=\"material-icons\"  >how_to_vote</i></a>";
                       
                     }else{
                       //votar
-                      echo " <a class=\"btn btn-success btn-block\" href=\"processa/proc_voto.php?id=".$candidato["id"]."\" role=\"button\" ><i  class=\"material-icons\"  >how_to_vote</i></a>";
+                      echo " <a class=\"btn btn-success btn-block\" href=\"processa/proc_voto_deputado.php?id=".$candidato["id"]."\" role=\"button\" ><i  class=\"material-icons\"  >how_to_vote</i></a>";
                     }
                 }
             }
